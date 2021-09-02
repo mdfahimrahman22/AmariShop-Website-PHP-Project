@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <!-- Box icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Codevo - Ecommerce Website</title>
+
+    <style>
+        body {
+            background: #d1e2e9;
+        }
+
+        .login-main {
+            max-width: 350px;
+            min-height: 400px;
+            background-color: white;
+            margin: 200px auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        form {
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        label {
+            display: block;
+            padding: 10px;
+        }
+
+        input {
+            display: block;
+        }
+
+        input[type="button"] {
+            padding: 5px 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header id="home" class="header">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="navigation container">
+                <div class="logo">
+                    <h1>Codevo</h1>
+                </div>
+
+                <div class="menu">
+                    <div class="top-nav">
+                        <div class="logo">
+                            <h1>Codevo</h1>
+                        </div>
+                        <div class="close">
+                            <i class="bx bx-x"></i>
+                        </div>
+                    </div>
+
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="product.html" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Sign Up</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                  <a href="#account" class="nav-link scroll-link">Account</a>
+                </li>
+                <li class="nav-item">
+                  <a href="cart.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+                </li>  -->
+                    </ul>
+                </div>
+
+                <a href="cart.html" class="cart-icon">
+                    <i class="bx bx-shopping-bag"></i>
+                </a>
+
+                <div class="hamburger">
+                    <i class="bx bx-menu"></i>
+                </div>
+            </div>
+        </nav>
+
+        <div class="login-main">
+            <p>Login</p>
+            <form action="">
+                <label for="username">Username
+                    <input type="email" name="" id="username">
+                </label>
+                <label for="password">Password
+                    <input type="email" name="" id="username">
+                </label>
+                <p>Forget Password</p>
+                <input type="button" value="Login">
+            </form>
+        </div>
+
+    </header>
+
+
+
+</body>
+
+</html>
