@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c> 
+
+    # rewrite engine settings:
+    RewriteEngine On
+    
+    # rewrite rules:
+    RewriteRule ^index\.php$ - [L]
+    RewriteRule ^home?$ views/home.php
+    RewriteRule ^login?$ views/login.php
+    RewriteRule ^signup?$ views/signup.php
+    RewriteRule ^products?$ views/products.php
+    RewriteRule ^product/([0-9]+) views/product.php?product_id=1
+    RewriteRule ^carts/([0-9]+) views/carts.php?user_id=1
+
+</IfModule>
