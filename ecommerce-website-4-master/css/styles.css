@@ -324,8 +324,8 @@ li {
 	}
 
 	.hero-content {
-		top: 40%;
-		transform: translate(15%, -50%);
+		/* top: 40%; */
+		transform: translate(5%, -50%);
 	}
 
 	.header .hero-img {
