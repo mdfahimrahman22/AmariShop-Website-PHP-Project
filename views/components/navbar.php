@@ -2,7 +2,7 @@
 <nav class="nav">
       <div class="navigation container">
         <div class="logo">
-          <h1>AmariShop</h1>
+        <h1>Amari<span>Shop</span></h1>
         </div>
 
         <div class="menu">
@@ -23,7 +23,7 @@
               <a href="product.html" class="nav-link">Products</a>
             </li>
             <li class="nav-item">
-              <a href="aboutus.html" class="nav-link">About</a>
+              <a href="about_us" class="nav-link">About</a>
             </li>
             <li class="nav-item">
               <a href="contact.html" class="nav-link">Contact</a>

@@ -1,5 +1,5 @@
 <?php
-
+include_once "Bcrypt.php";
 define('HOST', 'localhost');
 define('USER_NAME', 'root');
 define('PASSWORD', '');
@@ -22,7 +22,7 @@ class Database
         $this->connection = mysqli_connect(HOST, USER_NAME, PASSWORD, DB_NAME);
 
         if (mysqli_connect_error()) {
-            die('Connection Error: '.mysqli_connect_error());
+            die('Connection Error: ' . mysqli_connect_error());
         }
     }
 
@@ -30,31 +30,17 @@ class Database
     public function query($sql)
     {
         $result = $this->connection->query($sql);
-
+        $result_array = [];
         if (!$result) {
-            die('Query fails : '.$sql);
+            die('Query fails : ' . $sql);
         }
-
-        return $result;
-    }
-
-    // Getting list of all rows
-    public function fetch_array($result)
-    {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $resultarray[] = $row;
+                $result_array = $row;
             }
-            return $resultarray;
-        }
-    }
-
-    // Getting only 1 row
-    public function fetch_row($result)
-    {
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return $row;
+            return $result_array;
+        } else {
+            return $result_array;
         }
     }
 
@@ -70,7 +56,32 @@ class Database
     {
         $this->connection->close();
     }
+
+    public function create_user($email, $pass)
+    {
+        $bcrypt = new Bcrypt();
+        $hashed_pass = $bcrypt->hashPassword($pass);
+        $sql = "INSERT INTO `users`(`email`, `password`) VALUES ('$email','$hashed_pass')";
+        $result = $this->connection->query($sql);
+        return $result;
+    }
+    public function valid_user($email, $pass)
+    {
+        $bcrypt = new Bcrypt();
+        $sql = "SELECT `email`, `password` FROM `users` WHERE `email`='$email'";
+        $result = $this->query($sql);
+        $res = 0; //0 for Invalid user
+        if (sizeof($result) > 0) {
+            if ($bcrypt->checkPassword($pass, $result['password'])) {
+                $res = 1; //1 for valid user
+            } else {
+                $res = -1; //-1 for Wrong password
+            }
+        } else {
+            $res = 2; //2 for Account not created
+        }
+        return $res;
+    }
 } // Class ends
 
 $database = new Database();
-?>

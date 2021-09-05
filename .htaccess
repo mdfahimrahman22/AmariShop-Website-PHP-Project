@@ -6,6 +6,7 @@
     # rewrite rules:
     RewriteRule ^index\.php$ - [L]
     RewriteRule ^home?$ views/home.php
+    RewriteRule ^about_us?$ views/aboutus.php
     RewriteRule ^login?$ views/login.php
     RewriteRule ^signup?$ views/signup.php
     RewriteRule ^products?$ views/products.php

@@ -1027,3 +1027,19 @@ th:last-child {
 		display: none;
 	}
 }
+
+.toast-message{
+	font-size: 1.5rem;
+}
+
+.logo>h1 {
+	font-weight: bold;
+  }
+
+  .logo>h1 {
+	color: #fbb419;
+  }
+
+  .logo>h1>span {
+	color: #b888ff;
+  }

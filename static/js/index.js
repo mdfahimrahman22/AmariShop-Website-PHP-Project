@@ -42,3 +42,22 @@ $(window).scroll(function() {
 gsap.from(".logo", { opacity: 0, duration: 1, delay: 0.5, y: -10 });
 gsap.from(".hamburger", { opacity: 0, duration: 1, delay: 1, x: 20 });
 
+function show_message(message,type){
+  toastr.options.timeOut = 2000;
+  switch (type) {
+    case "info":
+      toastr.info(message);
+      break;
+    case "success":
+      toastr.success(message);
+      break;
+    case "warning":
+      toastr.warning(message);
+      break;
+    case "error":
+      toastr.error(message);
+      break;
+    default:
+      toastr.error("An error occurred");
+  }
+}
