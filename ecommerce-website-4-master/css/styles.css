@@ -395,9 +395,8 @@ li {
 }
 
 .advert-box .content {
-	position: absolute;
-	top: 50%;
-	right: 5%;
+	text-align: center;
+    margin-top: 3rem;
 	transform: translate(0, -50%);
 }
 
