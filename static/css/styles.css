@@ -347,7 +347,7 @@ li {
 
 /* Adverts */
 .section {
-	padding: 10rem 0 5rem 0;
+	padding: 6rem 0 5rem 0;
 }
 
 .advert-center {
@@ -564,7 +564,7 @@ li {
 }
 
 .product-banner .right {
-	align-self: center;
+	margin-top: 19%;
 	text-align: center;
 	padding: 1.6rem;
 }
@@ -1043,3 +1043,11 @@ th:last-child {
   .logo>h1>span {
 	color: #b888ff;
   }
+
+  .shopnow-btn{
+    font-size: 24px;
+	}
+.logout-btn{
+	border: none;
+    background: transparent;
+}

@@ -13,10 +13,19 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+<!-- Toastr cdn  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
+  <link rel="stylesheet" href="static/css/about_us.css" />
   <title>AmariShop</title>
-
+  <style>
+    .right{
+      margin-top:0 !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -25,367 +34,53 @@ session_start();
     <?php include 'components/navbar.php'; ?>
 
     <!-- Hero -->
-    <img src="static/images/banner.png" alt="" class="hero-img" />
-
-    <div class="hero-content">
-      <h2><span class="discount">70% </span> SALE OFF</h2>
-      <h1>
-        <span>Summer Vibes</span>
-        <span>mode on</span>
+    <div class="hero-content-aboutus">
+      <h2 class="shop-name-heading"><span class="shop-name"> Amari</span> Shop</h2>
+      <h1 class="sub-heading1">
+        <span>"Make your happiness affordable"</span>
       </h1>
-      <a class="btn" href="#">shop now</a>
+      <a class="btn shopnow-btn" href="#">shop now</a>
     </div>
   </header>
 
   <!-- Main -->
   <main>
+  <div class="container">
+        <div class="title">
+          <h1>Our Features</h1>
+        </div>
+    </div>
     <section class="advert section">
       <div class="advert-center container">
-        <div class="advert-box">
+      <div class="advert-box product-safety">
           <div class="dotted">
-            <div class="content">
-              <h2>
-                Girls <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
+            <div class="content-service">
+              <h2>Product Safety</h2>
             </div>
           </div>
-          <img src="static/images/advert1.png" alt="">
+          <img src="static/images/protection.png" alt="">
         </div>
 
-        <div class="advert-box">
-          <div class="dotted">
-            <div class="content">
-              <h2>
-                Summer <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
+        <div class="advert-box fast-delivery">
+        <div class="dotted">
+            <div class="content-service">
+              <h2>Fast Delivery</h2>
             </div>
           </div>
-          <img src="static/images/advert2.png" alt="">
+          <img src="static/images/express-delivery.png" alt="">
         </div>
 
-        <div class="advert-box">
+        <div class="advert-box best-price">
           <div class="dotted">
-            <div class="content">
-              <h2>
-                Boys <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
+            <div class="content-service">
+              <h2>Best Price</h2>
             </div>
           </div>
-          <img src="static/images/advert3.png" alt="">
+          <img src="static/images/price-tag.png" alt="">
         </div>
       </div>
     </section>
 
-    <!-- Featured -->
-    <section class="section featured">
-      <div class="title">
-        <h1>Featured Products</h1>
-      </div>
-
-      <div class="product-center container">
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic3.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic4.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--Latest -->
-    <section class="section featured">
-      <div class="title">
-        <h1>Latest Products</h1>
-      </div>
-
-      <div class="product-center container">
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic5.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic4.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic3.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic5.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Product Banner -->
     <section class="section">
@@ -394,20 +89,68 @@ session_start();
           <img src="static/images/test.jpg" alt="" />
         </div>
         <div class="right">
-          <div class="content">
-            <h2><span class="discount">70% </span> SALE OFF</h2>
-            <h1>
-              <span>Collect Your</span>
-              <span>Kids Collection</span>
-            </h1>
-            <a class="btn" href="#">shop now</a>
+          <div class="hero-content-aboutus">
+          <h2 class="shop-name-heading"><span class="shop-name">Our </span>Service</h2>
+            <h3 id="heading-3">
+              <span>We provide great value by offering competitive prices on all our products
+                and aim to please our customers with fast delivery and easy tracking system
+              </span>
+            </h3>
+            <a class="btn shopnow-btn" href="#">shop now</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Team -->
+    <div class="our_team_member">
+      <div class="container">
+        <div class="title">
+          <h1>Our Team</h1>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-md-6 col-lg-3">
+            <div class="single_team">
+              <div class="thumb">
+                <img src="static/images/profile_fahim.jpg" alt="">
+                <div class="social_link">
+                  <a href="#"><i class="fa fa-envelope"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="master_name text-center">
+                <h3>Md. Fahim Rahman</h3>
+                <p>CSE Graduate, AUST</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 col-lg-3">
+            <div class="single_team">
+              <div class="thumb">
+                <img src="static/images/profile_amlan.jpg" alt="">
+                <div class="social_link">
+                  <a href="#"><i class="fa fa-envelope"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="master_name text-center">
+                <h3>Amlan Chakraborty</h3>
+                <p>CSE Graduate, AUST</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Testimonials -->
     <section class="section">
+    <div class="container">
+        <div class="title">
+          <h1>Testimonials</h1>
+        </div>
+    </div>
       <div class="testimonial-center container">
         <div class="testimonial">
           <span>&ldquo;</span>
@@ -525,21 +268,9 @@ session_start();
   <!-- Bootstrap, jquery  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
-  <!-- Toastr cdn  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   <!-- Custom Script -->
   <script src="static/js/index.js"></script>
-
-  <?php
-  if ($_SESSION['message'] != "" && $_SESSION['type'] != "") {
-    showMsg($_SESSION['message'], $_SESSION['type']);
-    $_SESSION['message'] = $_SESSION['type'] = "";
-  }
-  function showMsg($msg, $type)
-  {
-    echo "<script>toastr." . $type . "(\"$msg\")</script>";
-  }
-  ?>
 
 </body>
 

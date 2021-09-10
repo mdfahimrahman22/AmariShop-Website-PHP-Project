@@ -13,10 +13,12 @@ session_start();
   <title>AmariShop Signup</title>
   <!-- Box icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!-- Toastr cdn  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
   <link rel="stylesheet" type="text/css" href="static/css/login_form_style.css" />
@@ -113,51 +115,13 @@ session_start();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <!-- Bootstrap, jquery  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
-
-  <!-- Toastr cdn  -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  
   <!-- Custom Script -->
   <script src="static/js/index.js"></script>
   <script src="static/js/signup.js"></script>
 
   <?php
-
-  function navigateTo($route, $msg, $msgType)
-  {
-    $_SESSION['message'] = $msg;
-    $_SESSION['type'] = $msgType;
-    echo "<script> window.location.href= '$route'; </script>"; //Route to Login Page
-  }
-  if ($_SESSION['message'] != "" && $_SESSION['type'] != "") {
-    showMsg($_SESSION['message'], $_SESSION['type']);
-    $_SESSION['message'] = $_SESSION['type'] = "";
-  }
-  include_once "../model/Database.php";
-
-  function showMsg($msg, $type)
-  {
-    echo "<script>toastr." . $type . "(\"$msg\")</script>";
-  }
-
-  if (isset($_POST['signup_btn'])) {
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $confirmPass = $_POST['confirm_pass'];
-    if ($email == null || $pass == null || $confirmPass == null) {
-      echo showMsg("Invalid credentials.", "error");
-    } else if ($pass != $confirmPass) {
-      echo showMsg("Confirm Password is not matching.", "warning");
-    } else {
-      $res = $database->create_user($email, $pass);
-      if ($res != false) {
-        navigateTo("login", "Sign Up Successful", "success");
-        exit();
-      } else {
-        echo showMsg("Something went wrong. Please try again.", "error");
-      }
-    }
-  }
+  include_once "controller.php";
   ?>
 </body>
 

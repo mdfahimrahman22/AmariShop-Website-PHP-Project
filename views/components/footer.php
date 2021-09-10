@@ -12,7 +12,7 @@
         </div>
         <div class="footer-center">
           <h3>INFORMATION</h3>
-          <a href="aboutus.html">About Us</a>
+          <a href="about_us">About Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms & Conditions</a>
           <a href="#">Contact Us</a>
@@ -32,25 +32,19 @@
             <span>
               <i class="fas fa-map-marker-alt"></i>
             </span>
-            42 Dream House, Dreammy street, 7131 Dreamville, USA
+            141 & 142, Love Rd, Dhaka 1208, Bangladesh
           </div>
           <div>
             <span>
-              <i class="far fa-envelope"></i>
+              <i class="fa fa-envelope"></i>
             </span>
-            company@gmail.com
+            amarishopcontact@gmail.com
           </div>
           <div>
             <span>
-              <i class="fas fa-phone"></i>
+              <i class="fa fa-phone"></i>
             </span>
-            456-456-4512
-          </div>
-          <div>
-            <span>
-              <i class="far fa-paper-plane"></i>
-            </span>
-            Dream City, USA
+            +8801700000000
           </div>
         </div>
       </div>

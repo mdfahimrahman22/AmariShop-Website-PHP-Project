@@ -65,7 +65,18 @@ class Database
         $result = $this->connection->query($sql);
         return $result;
     }
-    public function valid_user($email, $pass)
+    public function validate_user(){
+        $email=&$_SESSION['email'];
+        $pass=&$_SESSION['pass'];
+        if($email && $pass){
+            $res=$this->login($email,$pass);
+            return $res;
+        }else{
+            return 0;
+        }
+        
+    }
+    public function login($email, $pass)
     {
         $bcrypt = new Bcrypt();
         $sql = "SELECT `email`, `password` FROM `users` WHERE `email`='$email'";
@@ -74,6 +85,8 @@ class Database
         if (sizeof($result) > 0) {
             if ($bcrypt->checkPassword($pass, $result['password'])) {
                 $res = 1; //1 for valid user
+                $_SESSION['email']=$email;
+                $_SESSION['pass']=$pass;
             } else {
                 $res = -1; //-1 for Wrong password
             }
@@ -81,6 +94,9 @@ class Database
             $res = 2; //2 for Account not created
         }
         return $res;
+    }
+    public function logout(){
+        session_destroy();
     }
 } // Class ends
 
