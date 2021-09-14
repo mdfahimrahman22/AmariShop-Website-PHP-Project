@@ -16,11 +16,11 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
   <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-  
+
   <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
   <script src="static/vendor/tilt/tilt.jquery.min.js"></script>
   <!-- Toastr cdn  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
@@ -70,33 +70,38 @@ session_start();
           </button>
         </div>
 
-        <div class="text-center p-t-57 p-b-20">
-          <span class="txt1">
-            Or login with
-          </span>
-        </div>
-
-        <div class="flex-c p-b-23">
-          <a href="#" class="login100-social-item">
-            <i class="fa fa-facebook-f"></i>
-          </a>
-
-          <a href="#" class="login100-social-item">
-            <img src="static/images/icons/icon-google.png" alt="GOOGLE">
-          </a>
-        </div>
-
-        <div class="text-center">
-          <div class="text-center p-t-0 p-b-0">
-            <span class="txt1">
-              Don't have an account?
-            </span>
-            <a href="signup" class="txt2 hov1 signup-btn">
-              &nbspSign Up
-            </a>
-          </div>
-        </div>
       </form>
+      <div class="text-center p-t-57 p-b-20">
+        <span class="txt1">
+          Or login with
+        </span>
+      </div>
+      <div class="flex-c p-b-23">
+        <form method='POST'>
+          <button type="submit" name="google_login_btn">
+            <a href="#" class="login100-social-item">
+              <i class="fa fa-facebook-f"></i>
+            </a>
+          </button>
+        </form>
+        <form method='POST'>
+          <button type="submit" name="google_login_btn">
+            <a href="#" class="login100-social-item">
+              <img src="static/images/icons/icon-google.png" alt="GOOGLE">
+            </a>
+          </button>
+        </form>
+      </div>
+      <div class="text-center">
+        <div class="text-center p-t-0 p-b-0">
+          <span class="txt1">
+            Don't have an account?
+          </span>
+          <a href="signup" class="txt2 hov1 signup-btn">
+            &nbspSign Up
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -106,7 +111,7 @@ session_start();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <!-- Bootstrap, jquery  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <!-- Custom Script -->
   <script src="static/js/index.js"></script>
   <script src="static/js/login.js"></script>

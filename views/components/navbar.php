@@ -1,5 +1,5 @@
 <?php
-include_once "controller.php";
+include_once __DIR__ . "/../controller.php";
 ?>
 <!-- Navigation -->
 <nav class="nav">
@@ -30,17 +30,18 @@ include_once "controller.php";
           <a href="about_us" class="nav-link">About</a>
         </li>
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="contact" class="nav-link">Contact</a>
         </li>
 
         <?php
-        $res = $database->validate_user();
+        $res = validateUser();
 
         if ($res === 1) {
+          $uid = get_user_id();
           echo ' 
           <li class="nav-item">
-          <a href="#" class="nav-link icon"><i class="bx bx-user-circle"></i></a>
-        </li> 
+          <a href="profile/' . $uid . '" class="nav-link icon"><i class="bx bx-user-circle"></i></a>
+          </li> 
             <li class="nav-item">
               <a href="#" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
             </li> 
