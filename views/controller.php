@@ -116,15 +116,20 @@ function get_user_profile()
 
 
 //Contact Page Controller
-if(isset($_POST['contact_form_btn'])){
+if (isset($_POST['contact_form_btn'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $subject = $_POST['subject'];
   $message = htmlentities($_POST['message']);
-  $res=$database->post_contact_message($name,$email,$subject,$message);
-  if($res){
-    showMsg("Thank you for your feedback.","success");
+  $res = $database->post_contact_message($name, $email, $subject, $message);
+  if ($res) {
+    showMsg("Thank you for your feedback.", "success");
   }
 }
-
-
+//Show Products Controller
+function get_products()
+{
+  global $database;
+  return $database->get_products();
+  
+}

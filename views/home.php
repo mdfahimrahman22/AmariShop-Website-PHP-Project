@@ -11,12 +11,12 @@ session_start();
   <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
   <!-- Box icons -->
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
   <script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
   <!-- Toastr cdn  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
@@ -27,7 +27,9 @@ session_start();
 <body>
   <!-- Header -->
   <header id="home" class="header">
-    <?php include 'components/navbar.php'; ?>
+    <?php include 'components/navbar.php';
+    include_once "controller.php";
+    ?>
 
     <!-- Hero -->
     <img src="static/images/banner.png" alt="" class="hero-img" />
@@ -94,79 +96,15 @@ session_start();
       </div>
 
       <div class="product-center container">
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic3.jpg" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic4.jpg" alt="">
 
+        <?php
+        $products = get_products();
+        
+        foreach ($products as $product) {
+          echo '
+          <div class="product">
+          <div class="product-header">
+            <img src="'.$product["img_url"].'" alt="">
             <ul class="icons">
               <span><i class="bx bx-heart"></i></span>
               <span><i class="bx bx-shopping-bag"></i></span>
@@ -175,7 +113,7 @@ session_start();
           </div>
           <div class="product-footer">
             <a href="#">
-              <h3>Boy’s T-Shirt</h3>
+              <h3>'.$product["name"].'</h3>
             </a>
             <div class="rating">
               <i class="bx bxs-star"></i>
@@ -184,9 +122,15 @@ session_start();
               <i class="bx bxs-star"></i>
               <i class="bx bx-star"></i>
             </div>
-            <h4 class="price">$50</h4>
+            <h4 class="price">'.$product["price"].'৳</h4>
           </div>
         </div>
+          ';
+        }
+
+        ?>
+        
+
       </div>
     </section>
 
@@ -413,11 +357,11 @@ session_start();
 
     <!-- Testimonials -->
     <section class="section">
-    <div class="container">
+      <div class="container">
         <div class="title">
           <h1>Testimonials</h1>
         </div>
-    </div>
+      </div>
       <div class="testimonial-center container">
         <div class="testimonial">
           <span>&ldquo;</span>
@@ -534,13 +478,11 @@ session_start();
 
   <!-- Bootstrap, jquery  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
- 
+
   <!-- Custom Script -->
   <script src="static/js/index.js"></script>
 
-  <?php
-  include_once "controller.php";
-  ?>
+
 
 </body>
 

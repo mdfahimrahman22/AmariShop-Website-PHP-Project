@@ -148,6 +148,16 @@ class Database
         $result = $this->connection->query($sql);
         return $result;
     }
+    public function get_products(){
+        $sql="SELECT * FROM `product`";
+        $product_list=[];
+        $products=$this->connection->query($sql);
+        while ($row = $products->fetch_assoc()) {
+            array_push($product_list,$row);
+        }
+        
+        return $product_list;
+    }
 } // Class ends
 
 $database = new Database();

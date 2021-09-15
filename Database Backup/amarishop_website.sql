@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2021 at 11:20 AM
+-- Generation Time: Sep 15, 2021 at 08:37 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -31,6 +31,13 @@ CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `name` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `name`) VALUES
+(1, 'Man\'s Fashion');
 
 -- --------------------------------------------------------
 
@@ -68,13 +75,23 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(30) DEFAULT NULL,
   `description` text DEFAULT NULL,
+  `img_url` text DEFAULT NULL,
   `model` varchar(20) DEFAULT NULL,
   `brand` varchar(20) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
+  `rating` float DEFAULT NULL,
   `product_discount` int(11) DEFAULT 0,
   `promo_code` varchar(20) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `name`, `description`, `img_url`, `model`, `brand`, `price`, `rating`, `product_discount`, `promo_code`, `category_id`) VALUES
+(1, 'Ego Trendy Half Sleeve T-Shirt', 'Product details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. ', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 160, 5, 0, NULL, 1),
+(3, 'T-Shirt For Men - Silver', 'Dummy TexProduct details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. t', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 180, 5, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -96,8 +113,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `full_name`, `phone`, `address`, `email`, `password`) VALUES
-(35, '', '', '', 'fahimpranto002@gmail.com', '$2y$12$PBybJ9ne07W7nzhGMmheB.g/7h1aN/N.4nria6sYnTWXjHxl.v3CG'),
-(36, '', '', '', '180204028@aust.edu', '$2y$12$ZoG5gh/2nGeMQtwxmJvi5eIjmRjccMEvmWDNjfxsCzgg87ODrJij.');
+(45, 'Md. Fahim Rahman', '+8801615990017', 'Mym', '180204028@aust.edu', '$2y$12$l.nhvermebcaNEOzBY82WO29NWzKcgM9kR3oxpdlnLb7U75Z50oZC'),
+(46, 'Md. Fahim Rahman', '0189322564', '7/1 Provatisenalen, Shankipara, Mymensingh', 'fahimpranto002@gmail.com', '$2y$12$7FqVl4woUXcqRkhweSd.fe8RDRV288JhSoWOfB8MuSe8QP8RMPTaa');
 
 --
 -- Indexes for dumped tables
@@ -135,7 +152,8 @@ ALTER TABLE `product`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -145,7 +163,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -163,13 +181,13 @@ ALTER TABLE `order_stage`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Constraints for dumped tables
