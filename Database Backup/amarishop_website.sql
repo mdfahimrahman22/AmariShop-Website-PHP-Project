@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2021 at 08:37 PM
+-- Generation Time: Sep 17, 2021 at 08:40 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -82,16 +82,17 @@ CREATE TABLE `product` (
   `rating` float DEFAULT NULL,
   `product_discount` int(11) DEFAULT 0,
   `promo_code` varchar(20) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
+  `category_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `name`, `description`, `img_url`, `model`, `brand`, `price`, `rating`, `product_discount`, `promo_code`, `category_id`) VALUES
-(1, 'Ego Trendy Half Sleeve T-Shirt', 'Product details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. ', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 160, 5, 0, NULL, 1),
-(3, 'T-Shirt For Men - Silver', 'Dummy TexProduct details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. t', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 180, 5, 0, NULL, 1);
+INSERT INTO `product` (`product_id`, `name`, `description`, `img_url`, `model`, `brand`, `price`, `rating`, `product_discount`, `promo_code`, `category_id`, `created_at`) VALUES
+(1, 'Ego Trendy Half Sleeve T-Shirt', 'Product details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. ', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 160, 5, 0, NULL, 1, '2021-09-17 12:37:57'),
+(3, 'T-Shirt For Men - Silver', 'Dummy TexProduct details of Ego Trendy Half Sleeve T-Shirt For Men - Silver\r\nBrand Name : City Boy\r\nSleeve: Half Sleeve\r\nFabric: Polyester\r\nMain Materials: Polyester\r\nColor: Silver\r\nStyle : T-Shirt\r\n170 GSM\r\nSize- M L XL\r\nM - Length 27\" chest 37\"\r\nL - Length 28\" chest: 39\"\r\nXL - Length 29\" chest 41\",\r\nProduct Description: \r\nPremium quality jersey t-shirt with 100% qc product. It\'s very stylish and comfortable. This is slim fit t-shirt.  always works with trendy product. This is very trendy and stylish product. \r\nAbout City Boy:\r\nCity Boy is a trusted and reliable fashion brand in all over Bangladesh. City Boy manufactures and supplies quality products in all categories at a competitive price range from their own garments. City Boy always follow “Quality never compromised”. City Boy supply premium quality and 100% QC pass product. City Boy always believes a return customer is our business asset. t', 'https://image.made-in-china.com/202f0j00ULiGpoKPhbcn/China-Men-s-Summer-Fashion-T-Shirt-Splicing-Color-Breathable-Daily-Shirt.jpg', NULL, 'City Boy', 180, 5, 0, NULL, 1, '2021-09-17 12:37:57');
 
 -- --------------------------------------------------------
 
