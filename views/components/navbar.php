@@ -4,11 +4,11 @@ include_once __DIR__ . "/../controller.php";
 <!-- Navigation -->
 <nav class="nav">
   <div class="navigation container">
-    <!-- <a href="home"> -->
+    <a href="home">
     <div class="logo">
       <h1>Amari<span>Shop</span></h1>
     </div>
-    <!-- </a> -->
+    </a>
     <div class="menu">
       <div class="top-nav">
         <div class="logo">
@@ -24,7 +24,7 @@ include_once __DIR__ . "/../controller.php";
           <a href="home" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="product.html" class="nav-link">Products</a>
+          <a href="#" class="nav-link">Products</a>
         </li>
         <li class="nav-item">
           <a href="about_us" class="nav-link">About</a>

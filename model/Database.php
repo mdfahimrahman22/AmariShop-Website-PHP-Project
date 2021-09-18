@@ -134,7 +134,7 @@ class Database
     }
     public function update_profile($name, $phone, $address)
     {
-        $result=false;
+        $result = false;
         if ($this->validate_user() == 1) {
             $user_id = $_SESSION['user_id'];
             $sql = "UPDATE `users` SET `full_name`='" . $name . "',`phone`='" . $phone . "',`address`='" . $address . "' WHERE user_id=" . $user_id . "";
@@ -143,20 +143,32 @@ class Database
         return $result;
     }
 
-    public function post_contact_message($name,$email,$subject,$message){
-        $sql="INSERT INTO `contact`(`name`, `email`, `subject`, `message`) VALUES ('".$name."','".$email."','".$subject."','".$message."')";
+    public function post_contact_message($name, $email, $subject, $message)
+    {
+        $sql = "INSERT INTO `contact`(`name`, `email`, `subject`, `message`) VALUES ('" . $name . "','" . $email . "','" . $subject . "','" . $message . "')";
         $result = $this->connection->query($sql);
         return $result;
     }
-    public function get_products(){
-        $sql="SELECT * FROM `product`";
-        $product_list=[];
-        $products=$this->connection->query($sql);
+    public function get_products()
+    {
+        $sql = "SELECT * FROM `product`";
+        $product_list = [];
+        $products = $this->connection->query($sql);
         while ($row = $products->fetch_assoc()) {
-            array_push($product_list,$row);
+            array_push($product_list, $row);
         }
-        
+
         return $product_list;
+    }
+    function get_product_details($product_id)
+    {
+        $sql = "SELECT p.product_id, p.name, p.description, p.img_url, p.model, p.brand, p.price, p.rating, p.product_discount, p.promo_code, p.created_at ,c.name as category_name FROM `product` p 
+        inner join `category` c
+        on p.category_id=c.category_id
+        WHERE p.product_id=" . $product_id;
+
+        $data = $this->query($sql);
+        return $data;
     }
 } // Class ends
 

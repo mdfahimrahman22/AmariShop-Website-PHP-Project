@@ -133,3 +133,9 @@ function get_products()
   return $database->get_products();
   
 }
+
+function get_product_details($id){
+global $database;
+return $database->get_product_details($id);
+
+}

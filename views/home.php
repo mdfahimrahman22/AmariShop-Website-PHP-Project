@@ -112,7 +112,7 @@ session_start();
             </ul>
           </div>
           <div class="product-footer">
-            <a href="#">
+            <a href="product-details/'.$product["product_id"].'">
               <h3>'.$product["name"].'</h3>
             </a>
             <div class="rating">
@@ -476,7 +476,7 @@ session_start();
   </script>
 
 
-  <!-- Bootstrap, jquery  -->
+  <!-- Bootstrap  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom Script -->
