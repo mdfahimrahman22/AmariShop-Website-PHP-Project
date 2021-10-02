@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2021 at 07:01 PM
+-- Generation Time: Oct 02, 2021 at 09:42 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -120,9 +120,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `full_name`, `phone`, `address`, `email`, `password`) VALUES
-(45, 'Md. Fahim Rahman', '+8801615990017', 'Mym', '180204028@aust.edu', '$2y$12$l.nhvermebcaNEOzBY82WO29NWzKcgM9kR3oxpdlnLb7U75Z50oZC'),
-(46, 'Md. Fahim Rahman', '0189322564', '7/1 Provatisenalen, Shankipara, Mymensingh', 'fahimpranto002@gmail.com', '$2y$12$7FqVl4woUXcqRkhweSd.fe8RDRV288JhSoWOfB8MuSe8QP8RMPTaa'),
-(48, 'Rahim', '01234567890', 'Jamalkhan Road, Chittagong', 'rahim@gmail.com', '$2y$12$HH8uLWVbuyxQWqXHRIIt6uKA5UPjep7obKGjj4.YP.16lMYJNdB3K');
+(45, 'Md. Fahim Rahman', '+8801615990017', 'Mym 2', '180204028@aust.edu', '$2y$12$l.nhvermebcaNEOzBY82WO29NWzKcgM9kR3oxpdlnLb7U75Z50oZC'),
+(48, 'Rahim', '01234567890', 'Jamalkhan Road, Chittagong', 'rahim@gmail.com', '$2y$12$HH8uLWVbuyxQWqXHRIIt6uKA5UPjep7obKGjj4.YP.16lMYJNdB3K'),
+(49, 'Md. Fahim Rahman', '01615990017', 'Dhaka', 'f1@gmail.com', '$2y$12$hSGe2ZHFBb/DenEgQvu.8OXdwWmfjiR6GLzOn4lV7zMdrs7pKfbaK');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +195,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Constraints for dumped tables
