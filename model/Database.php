@@ -61,7 +61,7 @@ class Database
     {
         $this->connection->close();
     }
-
+    //User Sign Up 
     public function create_user($email, $pass)
     {
         $bcrypt = new Bcrypt();
@@ -151,7 +151,29 @@ class Database
     }
     public function get_products()
     {
-        $sql = "SELECT * FROM `product`";
+        $sql = "SELECT * FROM `product` ORDER BY created_at DESC";
+        $product_list = [];
+        $products = $this->connection->query($sql);
+        while ($row = $products->fetch_assoc()) {
+            array_push($product_list, $row);
+        }
+
+        return $product_list;
+    }
+    public function get_featured_products()
+    {
+        $sql = "SELECT * FROM product WHERE rating in (4,5) ORDER BY created_at DESC LIMIT 10;";
+        $product_list = [];
+        $products = $this->connection->query($sql);
+        while ($row = $products->fetch_assoc()) {
+            array_push($product_list, $row);
+        }
+
+        return $product_list;
+    }
+    public function get_latest_products()
+    {
+        $sql = "SELECT * FROM product ORDER BY created_at DESC LIMIT 10;";
         $product_list = [];
         $products = $this->connection->query($sql);
         while ($row = $products->fetch_assoc()) {
@@ -170,6 +192,39 @@ class Database
         $data = $this->query($sql);
         return $data;
     }
-} // Class ends
+
+    function team_members()
+    {
+        $sql = "SELECT * FROM `our_team`";
+        $team_member_list = [];
+        $team = $this->connection->query($sql);
+        while ($row = $team->fetch_assoc()) {
+            array_push($team_member_list, $row);
+        }
+        return $team_member_list;
+    }
+    function get_testimonials(){
+        $sql = "SELECT * FROM `testimonials`";
+        $testimonial_list = [];
+        $testimonials = $this->connection->query($sql);
+        while ($row = $testimonials->fetch_assoc()) {
+            array_push($testimonial_list, $row);
+        }
+        return $testimonial_list;
+    }
+    function get_advertisements(){
+        $sql = "SELECT * FROM `advertise`";
+        $advertisement_list = [];
+        $advertisements = $this->connection->query($sql);
+        while ($row = $advertisements->fetch_assoc()) {
+            array_push($advertisement_list, $row);
+        }
+        return $advertisement_list;
+    }
+    function get_offer(){
+        $sql="SELECT * FROM `offer`";
+        return $this->query($sql);
+    }
+}
 
 $database = new Database();

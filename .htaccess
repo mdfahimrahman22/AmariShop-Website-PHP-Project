@@ -13,6 +13,6 @@
     RewriteRule ^signup$ views/signup.php [NC,L]
     RewriteRule ^products$ views/products.php [NC,L]
     RewriteRule ^product-details/([0-9]+)$ views/product_details.php?&product_id=$1 [NC,L]
-    RewriteRule ^carts$ views/carts.php [NC,L]
+    RewriteRule ^cart$ views/cart.php [NC,L]
 
 </IfModule>

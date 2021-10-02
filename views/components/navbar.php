@@ -24,7 +24,7 @@ include_once __DIR__ . "/../controller.php";
           <a href="home" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Products</a>
+          <a href="products" class="nav-link">Products</a>
         </li>
         <li class="nav-item">
           <a href="about_us" class="nav-link">About</a>
@@ -43,7 +43,7 @@ include_once __DIR__ . "/../controller.php";
           <a href="profile/' . $uid . '" class="nav-link icon"><i class="bx bx-user-circle"></i></a>
           </li> 
             <li class="nav-item">
-              <a href="#" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+              <a href="cart" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
             </li> 
             <form method="post">
             <li class="nav-item" >

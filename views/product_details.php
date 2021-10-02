@@ -11,7 +11,7 @@ $domain = str_replace($basename, "", $_SERVER['PHP_SELF']) . "../";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo $domain; ?>static/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo $domain; ?>static/images/online-shopping.png" type="image/x-icon">
 
     <!-- Box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
@@ -45,7 +45,7 @@ $domain = str_replace($basename, "", $_SERVER['PHP_SELF']) . "../";
                 </div>
             </div>
             <div class="right">
-                <span>Home/<?php echo $product_details["category_name"]?></span>
+                <span>Category:<?php echo $product_details["category_name"]?></span>
                 <h1><?php echo $product_details["name"]?></h1>
                 <div class="price"><?php echo $product_details["price"]?>৳</div>
                 <form>
@@ -65,116 +65,57 @@ $domain = str_replace($basename, "", $_SERVER['PHP_SELF']) . "../";
                     <input type="text" placeholder="1">
                     <a href="cart.html" class="addCart">Add To Cart</a>
                 </form>
-                <h3>Product Detail</h3>
-                <p><?php echo $product_details["description"]?></p>
+                <h3>Product Details</h3>
+                <div class="details">
+                <p><?php echo nl2br($product_details["description"])?></p>
+                </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- Related -->
+    <!--Latest -->
     <section class="section featured">
-        <div class="top container">
-            <h1>Related Products</h1>
-            <a href="#" class="view-more">View more</a>
+      <div class="title">
+        <h1>Latest Products</h1>
+      </div>
+
+      <div class="product-center container">
+        <?php
+        $products = get_latest_products();
+
+        foreach ($products as $product) {
+          echo '
+          <div class="product">
+          <div class="product-header">
+            <img src="' . $product["img_url"] . '" alt="">
+            <ul class="icons">
+              <span><i class="bx bx-heart"></i></span>
+              <span><i class="bx bx-shopping-bag"></i></span>
+              <span><i class="bx bx-search"></i></span>
+            </ul>
+          </div>
+          <div class="product-footer">
+            <a href="product-details/' . $product["product_id"] . '">
+              <h3>' . $product["name"] . '</h3>
+            </a>
+            <div class="rating">';
+          for ($x = 1; $x <= 5; $x++) {
+            if ($x <= $product["rating"]) {
+              echo '<i class="bx bxs-star"></i>';
+            } else {
+              echo '<i class="bx bx-star"></i>';
+            }
+          }
+          echo '</div>
+            <h4 class="price">' . $product["price"] . '৳</h4>
+          </div>
         </div>
+          ';
+        }
+        ?>
 
-        <div class="product-center container">
-            <div class="product">
-                <div class="product-header">
-                    <img src="<?php echo $domain; ?>static/images/pic1.jpg" alt="">
-                    <ul class="icons">
-                        <span><i class="bx bx-heart"></i></span>
-                        <span><i class="bx bx-shopping-bag"></i></span>
-                        <span><i class="bx bx-search"></i></span>
-                    </ul>
-                </div>
-                <div class="product-footer">
-                    <a href="#">
-                        <h3>Boy’s T-Shirt</h3>
-                    </a>
-                    <div class="rating">
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bx-star"></i>
-                    </div>
-                    <h4 class="price">$50</h4>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-header">
-                    <img src="<?php echo $domain; ?>static/images/pic2.jpg" alt="">
-
-                    <ul class="icons">
-                        <span><i class="bx bx-heart"></i></span>
-                        <span><i class="bx bx-shopping-bag"></i></span>
-                        <span><i class="bx bx-search"></i></span>
-                    </ul>
-                </div>
-                <div class="product-footer">
-                    <a href="#">
-                        <h3>Boy’s T-Shirt</h3>
-                    </a>
-                    <div class="rating">
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bx-star"></i>
-                    </div>
-                    <h4 class="price">$50</h4>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-header">
-                    <img src="<?php echo $domain; ?>static/images/pic3.jpg" alt="">
-
-                    <ul class="icons">
-                        <span><i class="bx bx-heart"></i></span>
-                        <span><i class="bx bx-shopping-bag"></i></span>
-                        <span><i class="bx bx-search"></i></span>
-                    </ul>
-                </div>
-                <div class="product-footer">
-                    <a href="#">
-                        <h3>Boy’s T-Shirt</h3>
-                    </a>
-                    <div class="rating">
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bx-star"></i>
-                    </div>
-                    <h4 class="price">$50</h4>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-header">
-                    <img src="<?php echo $domain; ?>static/images/pic4.jpg" alt="">
-
-                    <ul class="icons">
-                        <span><i class="bx bx-heart"></i></span>
-                        <span><i class="bx bx-shopping-bag"></i></span>
-                        <span><i class="bx bx-search"></i></span>
-                    </ul>
-                </div>
-                <div class="product-footer">
-                    <a href="#">
-                        <h3>Boy’s T-Shirt</h3>
-                    </a>
-                    <div class="rating">
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bxs-star"></i>
-                        <i class="bx bx-star"></i>
-                    </div>
-                    <h4 class="price">$50</h4>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- Footer -->

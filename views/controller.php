@@ -131,11 +131,41 @@ function get_products()
 {
   global $database;
   return $database->get_products();
-  
+}
+function get_featured_products()
+{
+  global $database;
+  return $database->get_featured_products();
+}
+function get_latest_products()
+{
+  global $database;
+  return $database->get_latest_products();
+}
+function get_team_members()
+{
+  global $database;
+  return $database->team_members();
 }
 
-function get_product_details($id){
-global $database;
-return $database->get_product_details($id);
+function get_testimonials()
+{
+  global $database;
+  return $database->get_testimonials();
+}
 
+function get_advertisements(){
+  global $database;
+  return $database->get_advertisements();
+}
+
+function get_offer(){
+  global $database;
+  return $database->get_offer();
+}
+
+function get_product_details($id)
+{
+  global $database;
+  return $database->get_product_details($id);
 }

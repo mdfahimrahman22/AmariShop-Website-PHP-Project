@@ -8,7 +8,7 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="static/images/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="static/images/online-shopping.png" type="image/x-icon">
   <!-- Box icons -->
   <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
@@ -21,7 +21,12 @@ session_start();
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
   <title>AmariShop</title>
-
+  <style>
+    .banner-title {
+      font-weight: bold;
+      font-size: 4rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -32,60 +37,42 @@ session_start();
     ?>
 
     <!-- Hero -->
-    <img src="static/images/banner.png" alt="" class="hero-img" />
-
+    <?php
+    $offer = get_offer();
+    echo '
+    <img src="' . $offer["banner_img"] . '" alt="" class="hero-img" />
     <div class="hero-content">
-      <h2><span class="discount">70% </span> SALE OFF</h2>
-      <h1>
-        <span>Summer Vibes</span>
-        <span>mode on</span>
-      </h1>
-      <a class="btn shopnow-btn" href="#">shop now</a>
+      <h2><span class="discount">' . $offer["sale_off"] . ' </span> SALE OFF</h2>
+      <h1 class="banner-title">' . $offer["title"] . '</h1>
+      <a class="btn shopnow-btn" href="products">shop now</a>
     </div>
+    ';
+
+    ?>
+
   </header>
 
   <!-- Main -->
   <main>
     <section class="advert section">
       <div class="advert-center container">
-        <div class="advert-box">
-          <div class="dotted">
-            <div class="content">
-              <h2>
-                Girls <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
-            </div>
-          </div>
-          <img src="static/images/advert1.png" alt="">
-        </div>
 
-        <div class="advert-box">
-          <div class="dotted">
-            <div class="content">
-              <h2>
-                Summer <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
-            </div>
+        <?php
+        $advertisements = get_advertisements();
+        foreach ($advertisements as $advertisement) {
+          echo '
+        <div class="advert-box" style="background-color: ' . $advertisement["bg_color"] . ';">
+        <div class="dotted">
+          <div class="content">
+            <h2>' . $advertisement["title"] . '<br>Clothing</h2>
+            <h4>' . $advertisement["subtitle"] . '</h4>
           </div>
-          <img src="static/images/advert2.png" alt="">
         </div>
-
-        <div class="advert-box">
-          <div class="dotted">
-            <div class="content">
-              <h2>
-                Boys <br />
-                Clothing
-              </h2>
-              <h4>Worlds Best Brands</h4>
-            </div>
-          </div>
-          <img src="static/images/advert3.png" alt="">
-        </div>
+        <img src="' . $advertisement["img"] . '" alt="">
+      </div>
+        ';
+        }
+        ?>
       </div>
     </section>
 
@@ -98,13 +85,13 @@ session_start();
       <div class="product-center container">
 
         <?php
-        $products = get_products();
-        
+        $products = get_featured_products();
+
         foreach ($products as $product) {
           echo '
           <div class="product">
           <div class="product-header">
-            <img src="'.$product["img_url"].'" alt="">
+            <img src="' . $product["img_url"] . '" alt="">
             <ul class="icons">
               <span><i class="bx bx-heart"></i></span>
               <span><i class="bx bx-shopping-bag"></i></span>
@@ -112,24 +99,25 @@ session_start();
             </ul>
           </div>
           <div class="product-footer">
-            <a href="product-details/'.$product["product_id"].'">
-              <h3>'.$product["name"].'</h3>
+            <a href="product-details/' . $product["product_id"] . '">
+              <h3>' . $product["name"] . '</h3>
             </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">'.$product["price"].'৳</h4>
+            <div class="rating">';
+          for ($x = 1; $x <= 5; $x++) {
+            if ($x <= $product["rating"]) {
+              echo '<i class="bx bxs-star"></i>';
+            } else {
+              echo '<i class="bx bx-star"></i>';
+            }
+          }
+          echo '</div>
+            <h4 class="price">' . $product["price"] . '৳</h4>
           </div>
         </div>
           ';
         }
-
         ?>
-        
+
 
       </div>
     </section>
@@ -141,10 +129,14 @@ session_start();
       </div>
 
       <div class="product-center container">
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic5.jpg" alt="">
+        <?php
+        $products = get_latest_products();
 
+        foreach ($products as $product) {
+          echo '
+          <div class="product">
+          <div class="product-header">
+            <img src="' . $product["img_url"] . '" alt="">
             <ul class="icons">
               <span><i class="bx bx-heart"></i></span>
               <span><i class="bx bx-shopping-bag"></i></span>
@@ -152,187 +144,25 @@ session_start();
             </ul>
           </div>
           <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
+            <a href="product-details/' . $product["product_id"] . '">
+              <h3>' . $product["name"] . '</h3>
             </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
+            <div class="rating">';
+          for ($x = 1; $x <= 5; $x++) {
+            if ($x <= $product["rating"]) {
+              echo '<i class="bx bxs-star"></i>';
+            } else {
+              echo '<i class="bx bx-star"></i>';
+            }
+          }
+          echo '</div>
+            <h4 class="price">' . $product["price"] . '৳</h4>
           </div>
         </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
+          ';
+        }
+        ?>
 
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic4.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic1.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic3.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic2.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
-        <div class="product">
-          <div class="product-header">
-            <img src="static/images/pic5.jpg" alt="">
-
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="#">
-              <h3>Boy’s T-Shirt</h3>
-            </a>
-            <div class="rating">
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bxs-star"></i>
-              <i class="bx bx-star"></i>
-            </div>
-            <h4 class="price">$50</h4>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -340,7 +170,7 @@ session_start();
     <section class="section">
       <div class="product-banner">
         <div class="left">
-          <img src="static/images/test.jpg" alt="" />
+          <img src="static/images/family-shopping2.jpg" alt="" />
         </div>
         <div class="right">
           <div class="content">
@@ -349,100 +179,15 @@ session_start();
               <span>Collect Your</span>
               <span>Kids Collection</span>
             </h1>
-            <a class="btn shopnow-btn" href="#">shop now</a>
+            <a class="btn shopnow-btn" href="products">shop now</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section">
-      <div class="container">
-        <div class="title">
-          <h1>Testimonials</h1>
-        </div>
-      </div>
-      <div class="testimonial-center container">
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="static/images/profile1.jpg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
-        </div>
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="static/images/profile2.jpg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
-        </div>
-        <div class="testimonial">
-          <span>&ldquo;</span>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis,
-            fugiat labore. Veritatis et omnis consequatur.
-          </p>
-          <div class="rating">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bx-star"></i>
-          </div>
-          <div class="img-cover">
-            <img src="static/images/profile3.jpg" alt="" />
-          </div>
-          <h4>Will Smith</h4>
-        </div>
-      </div>
-    </section>
+    <?php include 'components/testimonials.php'; ?>
 
-    <!-- Brands -->
-    <section class="section">
-      <div class="brands-center container">
-        <div class="brand">
-          <img src="static/images/brand1.png" alt="" />
-        </div>
-        <div class="brand">
-          <img src="static/images/brand2.png" alt="" />
-        </div>
-        <div class="brand">
-          <img src="static/images/brand1.png" alt="" />
-        </div>
-        <div class="brand">
-          <img src="static/images/brand2.png" alt="" />
-        </div>
-        <div class="brand">
-          <img src="static/images/brand1.png" alt="" />
-        </div>
-        <div class="brand">
-          <img src="static/images/brand2.png" alt="" />
-        </div>
-      </div>
-    </section>
+
   </main>
   <?php include 'components/footer.php'; ?>
 
@@ -474,16 +219,10 @@ session_start();
       y: 50
     });
   </script>
-
-
   <!-- Bootstrap  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- Custom Script -->
   <script src="static/js/index.js"></script>
-
-
-
 </body>
 
 </html>
