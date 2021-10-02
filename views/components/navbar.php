@@ -32,6 +32,9 @@ include_once __DIR__ . "/../controller.php";
         <li class="nav-item">
           <a href="contact" class="nav-link">Contact</a>
         </li>
+        <li class="nav-item">
+              <a href="cart" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+        </li> 
 
         <?php
         $res = validateUser();
@@ -42,9 +45,7 @@ include_once __DIR__ . "/../controller.php";
           <li class="nav-item">
           <a href="profile/' . $uid . '" class="nav-link icon"><i class="bx bx-user-circle"></i></a>
           </li> 
-            <li class="nav-item">
-              <a href="cart" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
-            </li> 
+           
             <form method="post">
             <li class="nav-item" >
               <button type="submit" name="logout_btn" class="nav-link icon logout-btn"><i class="bx bx-log-out-circle"></i></a>

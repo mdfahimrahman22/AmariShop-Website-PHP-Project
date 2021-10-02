@@ -26,6 +26,15 @@ session_start();
       font-weight: bold;
       font-size: 4rem;
     }
+
+    .shopping-cart-btn {
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+    }
   </style>
 </head>
 
@@ -86,39 +95,8 @@ session_start();
 
         <?php
         $products = get_featured_products();
-
-        foreach ($products as $product) {
-          echo '
-          <div class="product">
-          <div class="product-header">
-            <img src="' . $product["img_url"] . '" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="product-details/' . $product["product_id"] . '">
-              <h3>' . $product["name"] . '</h3>
-            </a>
-            <div class="rating">';
-          for ($x = 1; $x <= 5; $x++) {
-            if ($x <= $product["rating"]) {
-              echo '<i class="bx bxs-star"></i>';
-            } else {
-              echo '<i class="bx bx-star"></i>';
-            }
-          }
-          echo '</div>
-            <h4 class="price">' . $product["price"] . '৳</h4>
-          </div>
-        </div>
-          ';
-        }
+        show_products($products);
         ?>
-
-
       </div>
     </section>
 
@@ -131,36 +109,7 @@ session_start();
       <div class="product-center container">
         <?php
         $products = get_latest_products();
-
-        foreach ($products as $product) {
-          echo '
-          <div class="product">
-          <div class="product-header">
-            <img src="' . $product["img_url"] . '" alt="">
-            <ul class="icons">
-              <span><i class="bx bx-heart"></i></span>
-              <span><i class="bx bx-shopping-bag"></i></span>
-              <span><i class="bx bx-search"></i></span>
-            </ul>
-          </div>
-          <div class="product-footer">
-            <a href="product-details/' . $product["product_id"] . '">
-              <h3>' . $product["name"] . '</h3>
-            </a>
-            <div class="rating">';
-          for ($x = 1; $x <= 5; $x++) {
-            if ($x <= $product["rating"]) {
-              echo '<i class="bx bxs-star"></i>';
-            } else {
-              echo '<i class="bx bx-star"></i>';
-            }
-          }
-          echo '</div>
-            <h4 class="price">' . $product["price"] . '৳</h4>
-          </div>
-        </div>
-          ';
-        }
+        show_products($products);
         ?>
 
       </div>

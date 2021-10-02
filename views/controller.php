@@ -154,12 +154,14 @@ function get_testimonials()
   return $database->get_testimonials();
 }
 
-function get_advertisements(){
+function get_advertisements()
+{
   global $database;
   return $database->get_advertisements();
 }
 
-function get_offer(){
+function get_offer()
+{
   global $database;
   return $database->get_offer();
 }
@@ -168,4 +170,106 @@ function get_product_details($id)
 {
   global $database;
   return $database->get_product_details($id);
+}
+
+if(isset($_GET["action"]))
+{
+ if($_GET["action"] == "delete")
+ {
+  $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+  $cart_data = json_decode($cookie_data, true);
+  foreach($cart_data as $keys => $values)
+  {
+   if($cart_data[$keys]['item_id'] == $_GET["id"])
+   {
+    unset($cart_data[$keys]);
+    $item_data = json_encode($cart_data);
+    setcookie("shopping_cart", $item_data, time() + (86400 * 30));
+    header("location:cart");
+   }
+  }
+ }
+
+}
+
+if (isset($_POST["add_to_cart"])) {
+  
+  if (isset($_COOKIE["shopping_cart"])) {
+    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+
+    $cart_data = json_decode($cookie_data, true);
+  } else {
+    $cart_data = array();
+  }
+
+  $item_id_list = array_column($cart_data, 'item_id');
+
+  if (in_array($_POST["hidden_id"], $item_id_list)) {
+    foreach ($cart_data as $keys => $values) {
+      if ($cart_data[$keys]["item_id"] == $_POST["hidden_id"]) {
+        $cart_data[$keys]["item_quantity"] = $cart_data[$keys]["item_quantity"] + $_POST["quantity"];
+      }
+    }
+  } else {
+    $item_array = array(
+      'item_id'   => $_POST["hidden_id"],
+      'item_name'   => $_POST["hidden_name"],
+      'item_img'   => $_POST["hidden_img"],
+      'item_price'  => $_POST["hidden_price"],
+      'item_quantity'  => $_POST["quantity"]
+    );
+    $cart_data[] = $item_array;
+  }
+
+
+  $item_data = json_encode($cart_data);
+  setcookie('shopping_cart', $item_data, time() + (86400 * 30));
+  navigateTo("cart","Successfully added to cart","info");
+  
+}
+
+function show_products($products)
+{
+  
+  foreach ($products as $product) {
+    echo '
+    
+    <div class="product">
+    <div class="product-header">
+      <img src="' . $product["img_url"] . '" alt="">
+      <ul class="icons">
+       <form method="post">
+       
+        <input type="hidden" name="hidden_name" value="' . $product["name"] . '" />
+        <input type="hidden" name="hidden_img" value="' . $product["img_url"] . '" />
+        <input type="hidden" name="hidden_price" value="' . $product["price"] . '" />
+        <input type="hidden" name="hidden_id" value="' . $product["product_id"] . '" />
+        <input type="hidden" name="quantity" value="1"/>
+        <button type="submit" name="add_to_cart" class="shopping-cart-btn" value="Submit">
+        <span><i class="bx bx-shopping-bag"></i></span>
+        </button>
+        
+      </form>
+      </ul>
+    </div>
+    <div class="product-footer">
+      <a href="product-details/' . $product["product_id"] . '">
+        <h3>' . $product["name"] . '</h3>
+      </a>
+      <div class="rating">';
+    for ($x = 1; $x <= 5; $x++) {
+      if ($x <= $product["rating"]) {
+        echo '<i class="bx bxs-star"></i>';
+      } else {
+        echo '<i class="bx bx-star"></i>';
+      }
+    }
+    echo '</div>
+      <h4 class="price">' . $product["price"] . '৳</h4>
+    </div>
+  </div>
+
+  
+    ';
+  }
 }

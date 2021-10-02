@@ -26,6 +26,7 @@ session_start();
 <body>
     <?php include 'components/navbar.php';
     include_once "controller.php";
+    $sub_total = 0;
     ?>
 
     <!-- Cart Items -->
@@ -36,37 +37,56 @@ session_start();
                 <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
-            <tr>
+            <?php
+
+            if (isset($_COOKIE["shopping_cart"])) {
+                global $sub_total;
+
+                $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                $cart_data = json_decode($cookie_data, true);
+                foreach ($cart_data as $keys => $values) {
+                    echo '<tr>
                 <td>
                     <div class="cart-info">
-                        <img src="static/images/boys_fashion1.png" alt="">
+                        <img src="' . $values["item_img"] . '" alt="">
                         <div>
-                            <p>Boy’s T-Shirt</p>
-                            <span>Price: 100৳</span>
+                            <p>' . $values["item_name"] . '</p>
+                            <span>Price: ' . $values["item_price"] . '৳</span>
                             <br />
-                            <a href="#">remove</a>
+                            <a href="cart?action=delete&id='.$values["item_id"].'">remove</a>
                         </div>
                     </div>
                 </td>
-                <td><input type="number" value="1" min="1"></td>
-                <td>100৳</td>
-            </tr>
-           
+                <td><input type="number" value="' . $values["item_quantity"] . '" min="1"></td>
+                <td>' . $values["item_price"] . '৳</td>
+            </tr>';
+                    $sub_total = $sub_total + ($values["item_quantity"] * $values["item_price"]);
+                }
+            }
+
+            ?>
+
+
         </table>
 
         <div class="total-price">
             <table>
                 <tr>
                     <td>Subtotal</td>
-                    <td>$200</td>
+                    <td><?php
+                        global $sub_total;
+                        echo $sub_total;
+                        ?></td>
                 </tr>
                 <tr>
-                    <td>Tax</td>
-                    <td>$50</td>
+                    <td>Delivery Charge</td>
+                    <td>50৳</td>
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>$250</td>
+                    <td><?php
+                        echo ($sub_total + 50) . "৳";
+                        ?></td>
                 </tr>
             </table>
             <a href="#" class="checkout btn">Proceed To Checkout</a>
