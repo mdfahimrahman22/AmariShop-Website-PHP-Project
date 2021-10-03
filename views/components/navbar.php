@@ -48,7 +48,7 @@ include_once __DIR__ . "/../controller.php";
            
             <form method="post">
             <li class="nav-item" >
-              <button type="submit" name="logout_btn" class="nav-link icon logout-btn"><i class="bx bx-log-out-circle"></i></a>
+              <button type="submit" name="logout_btn" class="nav-link icon logout-btn"><i class="bx bx-log-out-circle"></i></button>
             </li>
             </form>
             ';
