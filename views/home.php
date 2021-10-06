@@ -21,21 +21,7 @@ session_start();
   <!-- Custom StyleSheet -->
   <link rel="stylesheet" href="static/css/styles.css" />
   <title>AmariShop</title>
-  <style>
-    .banner-title {
-      font-weight: bold;
-      font-size: 4rem;
-    }
-
-    .shopping-cart-btn {
-      background-color: transparent;
-      background-repeat: no-repeat;
-      border: none;
-      cursor: pointer;
-      overflow: hidden;
-      outline: none;
-    }
-  </style>
+  
 </head>
 
 <body>

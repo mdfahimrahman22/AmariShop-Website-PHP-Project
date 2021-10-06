@@ -61,11 +61,21 @@ $domain = str_replace($basename, "", $_SERVER['PHP_SELF']) . "../";
           </div>
         </form>
 
-        <form class="form">
-          <input type="text" placeholder="1">
-          <a href="cart.html" class="addCart">Add To Cart</a>
+
+        <form method="post">
+          
+          <input type="hidden" name="hidden_name" value="<?php echo $product_details['name'] ?>" />
+          <input type="hidden" name="hidden_img" value="<?php echo $product_details['img_url'] ?>" />
+          <input type="hidden" name="hidden_price" value="<?php echo $product_details['price'] ?>" />
+          <input type="hidden" name="hidden_id" value="<?php echo $product_details['product_id'] ?>" />
+          <input type="hidden" name="quantity" value="1" />
+
+          <button type="submit" name="add_to_cart_pd" class="btn btn-primary" value="Submit">
+            Add To Cart
+          </button>
+
         </form>
-        <h3>Product Details</h3>
+        <h3 style="margin-top: 30px;">Product Details</h3>
         <div class="details">
           <p><?php echo nl2br($product_details["description"]) ?></p>
         </div>

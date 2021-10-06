@@ -1,6 +1,5 @@
 <?php
 include_once __DIR__ . "/../model/Database.php";
-include_once __DIR__ . "/../lib/vendor/autoload.php";
 
 // Common Controllers
 init();
@@ -71,7 +70,6 @@ if (isset($_POST['signup_btn'])) {
     $res = $database->create_user($email, $pass);
     if ($res) {
       navigateTo("login", "Sign Up Successful", "success");
-      exit();
     } else {
       echo showMsg("Something went wrong. Please try again.", "error");
     }
@@ -172,28 +170,22 @@ function get_product_details($id)
   return $database->get_product_details($id);
 }
 
-if(isset($_GET["action"]))
-{
- if($_GET["action"] == "delete")
- {
-  $cookie_data = stripslashes($_COOKIE['shopping_cart']);
-  $cart_data = json_decode($cookie_data, true);
-  foreach($cart_data as $keys => $values)
-  {
-   if($cart_data[$keys]['item_id'] == $_GET["id"])
-   {
-    unset($cart_data[$keys]);
-    $item_data = json_encode($cart_data);
-    setcookie("shopping_cart", $item_data, time() + (86400 * 30));
-    header("location:cart");
-   }
+if (isset($_GET["action"])) {
+  if ($_GET["action"] == "delete") {
+    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+    $cart_data = json_decode($cookie_data, true);
+    foreach ($cart_data as $keys => $values) {
+      if ($cart_data[$keys]['item_id'] == $_GET["id"]) {
+        unset($cart_data[$keys]);
+        $item_data = json_encode($cart_data);
+        setcookie("shopping_cart", $item_data, time() + (86400 * 30));
+        header("location:cart");
+      }
+    }
   }
- }
-
 }
 
-if (isset($_POST["add_to_cart"])) {
-  
+if (isset($_POST["add_to_cart_pd"])) {
   if (isset($_COOKIE["shopping_cart"])) {
     $cookie_data = stripslashes($_COOKIE['shopping_cart']);
 
@@ -201,7 +193,6 @@ if (isset($_POST["add_to_cart"])) {
   } else {
     $cart_data = array();
   }
-
   $item_id_list = array_column($cart_data, 'item_id');
 
   if (in_array($_POST["hidden_id"], $item_id_list)) {
@@ -220,17 +211,45 @@ if (isset($_POST["add_to_cart"])) {
     );
     $cart_data[] = $item_array;
   }
-
-
   $item_data = json_encode($cart_data);
-  setcookie('shopping_cart', $item_data, time() + (86400 * 30));
-  navigateTo("cart","Successfully added to cart","info");
-  
+  setcookie('shopping_cart', $item_data, time() + (86400 * 30), '/');
+  navigateTo("cart", "Successfully added to cart", "info");
+}
+
+if (isset($_POST["add_to_cart"])) {
+  if (isset($_COOKIE["shopping_cart"])) {
+    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+
+    $cart_data = json_decode($cookie_data, true);
+  } else {
+    $cart_data = array();
+  }
+  $item_id_list = array_column($cart_data, 'item_id');
+
+  if (in_array($_POST["hidden_id"], $item_id_list)) {
+    foreach ($cart_data as $keys => $values) {
+      if ($cart_data[$keys]["item_id"] == $_POST["hidden_id"]) {
+        $cart_data[$keys]["item_quantity"] = $cart_data[$keys]["item_quantity"] + $_POST["quantity"];
+      }
+    }
+  } else {
+    $item_array = array(
+      'item_id'   => $_POST["hidden_id"],
+      'item_name'   => $_POST["hidden_name"],
+      'item_img'   => $_POST["hidden_img"],
+      'item_price'  => $_POST["hidden_price"],
+      'item_quantity'  => $_POST["quantity"]
+    );
+    $cart_data[] = $item_array;
+  }
+  $item_data = json_encode($cart_data);
+  setcookie('shopping_cart', $item_data, time() + (86400 * 30), '/');
+  navigateTo("cart", "Successfully added to cart", "info");
 }
 
 function show_products($products)
 {
-  
+
   foreach ($products as $product) {
     echo '
     

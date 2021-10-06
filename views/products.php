@@ -33,14 +33,7 @@ session_start();
     <section class="section all-products" id="products">
         <div class="top container">
             <h1>All Products</h1>
-            <form>
-                <select>
-                    <option value="1">Defualt Sorting</option>
-                    <option value="2">Sort By Price</option>
-                    <option value="5">Sort By Rating</option>
-                </select>
-                <span><i class='bx bx-chevron-down'></i></span>
-            </form>
+            
         </div>
 
         <div class="product-center container">

@@ -1028,26 +1028,40 @@ th:last-child {
 	}
 }
 
-.toast-message{
+.toast-message {
 	font-size: 1.5rem;
 }
 
-.logo>h1 {
+.logo > h1 {
 	font-weight: bold;
-  }
+}
 
-  .logo>h1 {
+.logo > h1 {
 	color: #fbb419;
-  }
+}
 
-  .logo>h1>span {
+.logo > h1 > span {
 	color: #b888ff;
-  }
+}
 
-  .shopnow-btn{
-    font-size: 24px;
-	}
-.logout-btn{
+.shopnow-btn {
+	font-size: 24px;
+}
+.logout-btn {
 	border: none;
-    background: transparent;
+	background: transparent;
+}
+
+.banner-title {
+	font-weight: bold;
+	font-size: 4rem;
+}
+
+.shopping-cart-btn {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline: none;
 }
