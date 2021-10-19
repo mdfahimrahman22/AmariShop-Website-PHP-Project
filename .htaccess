@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c> 
+
+    # rewrite engine settings:
+    RewriteEngine On
+    
+    # rewrite rules:
+    RewriteRule ^$ index.php [NC,L]
+    RewriteRule ^home$ views/home.php [NC,L]
+    RewriteRule ^about_us$ views/aboutus.php [NC,L]
+    RewriteRule ^contact$ views/contact.php [NC,L]
+    RewriteRule ^login$ views/login.php [NC,L]
+    RewriteRule ^profile/([0-9]+)$ views/profile.php?&user_id=$1 [NC,L]
+    RewriteRule ^signup$ views/signup.php [NC,L]
+    RewriteRule ^products$ views/products.php [NC,L]
+    RewriteRule ^product-details/([0-9]+)$ views/product_details.php?&product_id=$1 [NC,L]
+    RewriteRule ^cart$ views/cart.php [NC,L]
+
+</IfModule>
