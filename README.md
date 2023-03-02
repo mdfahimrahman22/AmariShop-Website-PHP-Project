@@ -1,2 +1,2 @@
-# Mathmetical-Calculator-Project
-This is a website project where HTML, CSS and JavaScript is used.
+# AmariShop-Website-PHP-Project
+This is a website project where HTML, CSS, JavaScript and PHP is used.
